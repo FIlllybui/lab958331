@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Using the XMLHttpRequest Object</h2>
+<div id="demo">
+  <button type="button" onclick="loadXMLDoc()">request</button>
+  <p id="id2"></p>
+</div>
+<script>
+function loadXMLDoc() {
+  var xhttp = new XMLHttpRequest(); // Create a new XMLHttpRequest object
+
+  // Define a function to handle state changes of the request
+  xhttp.onreadystatechange = function() {
+    console.log("readyState: " + this.readyState + " status: " + this.status);
+    if (this.readyState == 4 && this.status == 200) {
+      // If the request is complete and successful (status 200),
+      // update the content of the element with id="demo"
+      document.getElementById("id2").innerHTML = this.responseText;
+    }
+  };
+ 
+  // Initialize the request
+  xhttp.open("GET", "xmlhttp_info01.txt", true);
+  xhttp.send(); // Send the request
+}
+</script>
+</body>
+</html>
